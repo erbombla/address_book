@@ -44,7 +44,7 @@ describe 'Address' do
   end
   describe '.all' do
     it 'creates an empty array' do
-      expect(Adress.all).to eq([])
+      expect(Address.all).to eq([])
     end
   end
   describe '#save' do
