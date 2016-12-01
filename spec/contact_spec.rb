@@ -1,6 +1,6 @@
 require 'rspec'
 require 'contact'
-require 'pry'
+require 'address'
 
 describe 'Contact' do
   before do
@@ -52,7 +52,7 @@ describe 'Contact' do
       new_contact.save
       new_contact2 = Contact.new({:first_name => 'Eric', :last_name => 'Bomblatus', :job_title => 'student', :company => 'Epicodus'})
       new_contact2.save
-      expect(Contact.find('ryan')).to eq(new_contact)
+      expect(Contact.find(1)).to eq(new_contact)
     end
   end
 end
