@@ -3,9 +3,9 @@ require 'address'
 require 'contact'
 
 describe 'Address' do
-  # before do
-  #   Address.clear
-  # end
+  before do
+    Address.clear
+  end
   describe '#type' do
     it 'displays address type' do
       new_address = Address.new({:type => 'home', :address => '409 Tork Place', :city => 'Hillsboro', :state => 'OR', :zip_code => 97006, :country => 'United States'})
@@ -40,6 +40,22 @@ describe 'Address' do
     it 'displays country' do
       new_address = Address.new({:type => 'home', :address => '409 Tork Place', :city => 'Hillsboro', :state => 'OR', :zip_code => 97006, :country => 'United States'})
       expect(new_address.country).to eq('United States')
+    end
+  end
+  describe '.all' do
+    it 'creates an empty array' do
+      expect(Adress.all).to eq([])
+    end
+  end
+  describe '#save' do
+    it 'saves address to the address array' do
+      new_address = Address.new({:type => 'home', :address => '409 Tork Place', :city => 'Hillsboro', :state => 'OR', :zip_code => 97006, :country => 'United States'})
+      expect(new_address.save).to eq([new_address])
+    end
+  end
+  describe '.clear' do
+    it 'will clear the array' do
+      expect(Address.clear).to eq([])
     end
   end
 end
