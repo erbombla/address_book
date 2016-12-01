@@ -1,9 +1,8 @@
 class Address
   @@address = []
-  attr_reader(:type, :address, :city, :state, :zip_code, :country)
+  attr_reader(:address, :city, :state, :zip_code, :country)
 
   def initialize(attributes)
-    @type = attributes.fetch(:type)
     @address = attributes.fetch(:address)
     @city = attributes.fetch(:city)
     @state = attributes.fetch(:state)
@@ -11,8 +10,15 @@ class Address
     @country = attributes.fetch(:country)
   end
 
-  def save
-    @@address.push(self)
+  def save(type)
+    if type == 'home'
+      @@address[0] = self
+    elsif type == 'other'
+       @@address[1] = self
+    elsif type == 'PO'
+      @@address[2] = self
+    end
+
   end
 
   def self.all
