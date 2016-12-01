@@ -1,4 +1,5 @@
 class Contact
+  @@contacts = []
   attr_reader(:first_name, :last_name, :job_title, :company)
 
   def initialize(attributes)
@@ -6,5 +7,13 @@ class Contact
     @last_name = attributes.fetch(:last_name)
     @job_title = attributes.fetch(:job_title)
     @company = attributes.fetch(:company)
+  end
+
+  def save
+    @@contacts.push(self)
+  end
+
+  def self.all
+    @@contacts
   end
 end
