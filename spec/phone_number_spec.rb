@@ -2,31 +2,32 @@ require 'rspec'
 require 'contact'
 require 'address'
 require 'email'
+require 'phone_number'
 
-describe 'Email' do
+describe 'Phone_Number' do
   before do
-    Contact.clear
+    Phone_Number.clear
   end
-  describe '#address' do
-    it 'displays the email address' do
-      new_email = Email.new({:email_address => 'ryanpback@gmail.com'})
-      expect(new_email.email_address).to eq('ryanpback@gmail.com')
+  describe '#phone_number' do
+    it 'displays the phone number' do
+      new_phone = Phone_Number.new({:phone_number => "512-431-9333"})
+      expect(new_phone.phone_number).to eq("512-431-9333")
     end
   end
   describe '.all' do
     it 'creates an empty array' do
-      expect(Email.all).to eq([])
+      expect(Phone_Number.all).to eq([])
     end
   end
   describe '#save' do
-    it 'saves email based on type' do
-      new_email = Email.new({:email_address => 'ryanpback@gmail.com'})
-      expect(new_email.save('personal')).to eq(new_email)
+    it 'saves phone number based on type' do
+      new_phone = Phone_Number.new({:phone_number => "512-431-9333"})
+      expect(new_phone.save('personal')).to eq(new_phone)
     end
   end
   describe '.clear' do
     it 'clears email_addresses array' do
-      expect(Email.clear).to eq([])
+      expect(Phone_Number.clear).to eq([])
     end
   end
 
