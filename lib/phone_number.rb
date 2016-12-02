@@ -1,28 +1,28 @@
-class Phone_Number
-  @@phone_numbers = []
+class Phone
+  @@numbers = []
   attr_reader(:phone_number)
 
   def initialize(attributes)
     @phone_number = attributes.fetch(:phone_number)
   end
 
-  def save(type)
-    if type == 'personal'
-      @@phone_numbers[0] = self
-    elsif type == 'work'
-      @@phone_numbers[1] = self
-    elsif type == 'other'
-      @@phone_numbers[2] = self
-    elsif type == 'other2'
-      @@phone_numbers[3] = self
-    end
+  def save_personal
+    @@numbers[0] = @phone_number
+  end
+
+  def save_work
+    @@numbers[1] = @phone_number
+  end
+
+  def save_other
+    @@numbers[2] = @phone_number
   end
 
   def self.all
-    @@phone_numbers
+    @@numbers
   end
 
   def self.clear
-    @@phone_numbers = []
+    @@numbers = []
   end
 end

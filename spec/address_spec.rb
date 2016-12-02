@@ -1,6 +1,8 @@
 require 'rspec'
-require 'address'
 require 'contact'
+require 'address'
+require 'email'
+require 'phone_number'
 
 describe 'Address' do
   before do
@@ -41,10 +43,22 @@ describe 'Address' do
       expect(Address.all).to eq([])
     end
   end
-  describe '#save' do
-    it 'saves address to the address array' do
+  describe '#save_home' do
+    it 'saves home address to the address array' do
       new_address = Address.new({:address => '409 Tork Place', :city => 'Hillsboro', :state => 'OR', :zip_code => 97006, :country => 'United States'})
-      expect(new_address.save('home')).to eq(new_address)
+      expect(new_address.save_home).to eq(new_address)
+    end
+  end
+  describe '#save_other' do
+    it 'saves other address to the address array' do
+      new_address = Address.new({:address => '409 Tork Place', :city => 'Hillsboro', :state => 'OR', :zip_code => 97006, :country => 'United States'})
+      expect(new_address.save_other).to eq(new_address)
+    end
+  end
+  describe '#save_po' do
+    it 'saves po box to the address array' do
+      new_address = Address.new({:address => '409 Tork Place', :city => 'Hillsboro', :state => 'OR', :zip_code => 97006, :country => 'United States'})
+      expect(new_address.save_po).to eq(new_address)
     end
   end
   describe '.clear' do

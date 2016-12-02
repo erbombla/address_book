@@ -2,6 +2,7 @@ require 'rspec'
 require 'contact'
 require 'address'
 require 'email'
+require 'phone_number'
 
 describe 'Email' do
   before do
@@ -18,15 +19,27 @@ describe 'Email' do
       expect(Email.all).to eq([])
     end
   end
-  describe '#save' do
-    it 'saves email based on type' do
-      new_email = Email.new({:email_address => 'ryanpback@gmail.com'})
-      expect(new_email.save('personal')).to eq(new_email)
-    end
-  end
   describe '.clear' do
     it 'clears email_addresses array' do
       expect(Email.clear).to eq([])
+    end
+  end
+  describe '#save_personal' do
+    it 'saves personal email to the address array' do
+      new_email = Email.new({:email_address => 'ryanpback@gmail.com'})
+      expect(new_email.save_personal).to eq(new_email)
+    end
+  end
+  describe '#save_work' do
+    it 'saves work email to the address array' do
+      new_email = Email.new({:email_address => 'ryanpback@gmail.com'})
+      expect(new_email.save_work).to eq(new_email)
+    end
+  end
+  describe '#save_other' do
+    it 'saves other email to the address array' do
+      new_email = Email.new({:email_address => 'ryanpback@gmail.com'})
+      expect(new_email.save_other).to eq(new_email)
     end
   end
 

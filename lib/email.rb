@@ -6,16 +6,16 @@ class Email
     @email_address = attributes.fetch(:email_address)
   end
 
-  def save(type)
-    if type == 'personal'
-      @@email_addresses[0] = self
-    elsif type == 'work'
-      @@email_addresses[1] = self
-    elsif type == 'other'
-      @@email_addresses[2] = self
-    elsif type == 'other2'
-      @@email_addresses[3] = self
-    end
+  def save_personal
+    @@email_addresses[0] = @email_address
+  end
+
+  def save_work
+    @@email_addresses[1] = @email_address
+  end
+
+  def save_other
+    @@email_addresses[2] = @email_address
   end
 
   def self.all

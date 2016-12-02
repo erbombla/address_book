@@ -1,6 +1,6 @@
 class Contact
   @@contacts = []
-  attr_reader(:first_name, :last_name, :job_title, :company, :id)
+  attr_reader(:first_name, :last_name, :job_title, :company, :id, :contact_addresses, :contact_emails, :contact_phones)
 
   def initialize(attributes)
     @first_name = attributes.fetch(:first_name)
@@ -8,6 +8,9 @@ class Contact
     @job_title = attributes.fetch(:job_title)
     @company = attributes.fetch(:company)
     @id = @@contacts.length + 1
+    @contact_addresses = nil
+    @contact_emails = nil
+    @contact_phones = nil
   end
 
   def save
@@ -16,6 +19,18 @@ class Contact
 
   def self.all
     @@contacts
+  end
+
+  def add_address(address)
+    @contact_addresses = address
+  end
+
+  def add_email(emails)
+    @contact_emails = emails
+  end
+
+  def add_phone(phones)
+    @contact_phones = phones
   end
 
   def self.clear
@@ -28,9 +43,3 @@ class Contact
     found_contact
   end
 end
-
-
-# new_contact = Contact.new({:first_name => 'Ryan', :last_name => 'Back', :job_title => 'student', :company => 'Epicodus'})
-# new_contact.save
-#
-# p Contact.find('ryan')
